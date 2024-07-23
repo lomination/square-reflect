@@ -1,18 +1,13 @@
-import lomination.squarereflect.*
-import lomination.squarereflect.console.Writable
-import lomination.squarereflect.console.Writer.{given Writable[Game]}
+import lomination.squarereflect.Game
+import lomination.squarereflect.codec.BoardParser
+import lomination.squarereflect.console.ConsoleApp
 
 @main def main(): Unit =
-  val board: Board = Board(
-    Seq(
-      Seq(Empty, End(), Empty),
-      Seq(Empty, Empty, Empty),
-      Seq(Empty, Empty, Empty),
-      Seq(Empty, Empty, Block()),
-      Seq(Block(), Empty, Empty),
-      Seq(Empty, Empty, Empty),
-      Seq(Empty, Kill(), Empty)
-    )
-  )
-  val game: Game = Game.init(board, (Position(0, 0), Direction.South))
-  println(game.write)
+  val board = BoardParser("boards/Board1.srb")
+  if (board.isSuccess)
+    val game = Game.init(board.get)
+    val app = ConsoleApp(game)
+    app.run
+  else
+    println("Parsing board failed")
+    println(board.failed.get.getMessage)
