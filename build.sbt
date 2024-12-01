@@ -15,8 +15,8 @@ lazy val root = project
     ),
     libraryDependencies ++= Seq(
       // "org.scala-lang.modules" %%% "scala-parser-combinators" % "2.3.0",
-      "org.jline" % "jline3" % "3.14.0",
-      "org.lwjgl" % "lwjgl" % "3.3.4",
+      // "org.jline" % "jline3" % "3.14.0",
+      // "org.lwjgl" % "lwjgl" % "3.3.4",
       "org.scalameta" %% "munit" % "1.0.0" % Test
     )
   )

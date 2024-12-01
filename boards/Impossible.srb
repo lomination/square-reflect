@@ -1,0 +1,8 @@
+encodingVersion = 0.1.0
+rows = 10*0;6*0,13-F,3*0;2*0,14-S,15-W,12,5*0;0,1-D-F,4*0,13-F,0,12,0;1-G1-F,7*0,2-W-D-F,0;0,12,7*0,4-D;2-N-D-F,7*0,2-E-G1-F,2-S-D-F;0,13-F,5*0,13-F,2-N-D-F,2-W-D-F;2*0,1-D-F,1-G1-F,6*0;2-N-D-F,3*0,1-D-F,1-G1-F,2*0,13-F,0
+starts = 2-2-S
+outsideTile = 1-D-F
+lightLevel = 5
+name = Impossible
+author = Ssor
+date = 2024-07-23

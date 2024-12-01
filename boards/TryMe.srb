@@ -1,0 +1,8 @@
+encodingVersion = 0.1.0
+rows = 2*0,2-S-D-F,2*0;5*0;5*0;2*0,1-D-T,2*0;2*1-D-F,3-D,2*1-D-F
+starts = 0-0-S
+outsideTile = 1-D-F
+lightLevel = None
+name = Test
+author = lomination
+date = 2024-07-28

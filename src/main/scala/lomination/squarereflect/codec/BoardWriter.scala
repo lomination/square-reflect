@@ -22,7 +22,7 @@ object BoardWriter {
                   else
                     acc :+ (1, tile)
                 }
-                .map(tuple => tuple._2.write * tuple._1)
+                .map(tuple => if (tuple._1 == 1) tuple._2.write else s"${tuple._1}*${tuple._2.write}")
                 .mkString(",")
             )
             .mkString(";")
@@ -46,22 +46,23 @@ object BoardWriter {
     extension (tile: Tile)
       def write: String =
         tile match
-          case Empty                                => "0"
-          case Block(mode)                          => s"1-${mode.write}"
-          case Angle(direction, mode)               => s"2-${direction.write}-${mode.write}"
-          case End(mode)                            => s"3-${mode.write}"
-          case Kill(mode)                           => s"4-${mode.write}"
-          case Cannon(mode)                         => s"5-${mode.write}"
-          case Portal(portalId, pairPosition, mode) => s"6-${portalId}-${pairPosition.x}-${pairPosition.y}-${mode.write}"
-          case Arrow(direction, mode)               => s"7-${direction.write}-${mode.write}"
-          case Blocker(direction, mode)             => s"8-${direction.write}-${mode.write}"
-          case Tunnel(direction, mode)              => s"9-${direction.write}-${mode.write}"
-          case Spike(direction, mode)               => s"10-${direction.write}-${mode.write}"
-          case DoubleSpike(direction, mode)         => s"11-${direction.write}-${mode.write}"
-          case Key                                  => "12"
-          case Lock                                 => "13"
-          case SsorStart(direction)                 => s"14-${direction.write}"
-          case SsorEnd(direction)                   => s"15-${direction.write}"
+          case Empty                            => "0"
+          case Block(mode, pushable)            => s"1-${mode.write}-${pushable.write}"
+          case Angle(direction, mode, pushable) => s"2-${direction.write}-${mode.write}-${pushable.write}"
+          case End(mode)                        => s"3-${mode.write}"
+          case Kill(mode)                       => s"4-${mode.write}"
+          case Cannon(mode)                     => s"5-${mode.write}"
+          case Portal(portalId, pairPosition, mode) =>
+            s"6-${portalId}-${pairPosition.x}-${pairPosition.y}-${mode.write}"
+          case Arrow(direction, mode)       => s"7-${direction.write}-${mode.write}"
+          case Blocker(direction, mode)     => s"8-${direction.write}-${mode.write}"
+          case Tunnel(direction, mode)      => s"9-${direction.write}-${mode.write}"
+          case Spike(direction, mode)       => s"10-${direction.write}-${mode.write}"
+          case DoubleSpike(direction, mode) => s"11-${direction.write}-${mode.write}"
+          case Key                          => "12"
+          case Lock(pushable)               => s"13-${pushable.write}"
+          case SsorStart(direction)         => s"14-${direction.write}"
+          case SsorEnd(direction)           => s"15-${direction.write}"
 
   given Writable[Direction] with
     extension (direction: Direction)
